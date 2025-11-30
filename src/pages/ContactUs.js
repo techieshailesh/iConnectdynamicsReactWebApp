@@ -1,7 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import emailjs from 'emailjs-com';
 import './ContactUs.css';
 
 function ContactUs() {
+  useEffect(() => {
+    // Initialize EmailJS with your public key
+    emailjs.init('FWnok6harYNe5Qo63');
+  }, []);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -20,15 +25,39 @@ function ContactUs() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message! We will get back to you soon.');
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      subject: '',
-      message: ''
-    });
+    
+    // EmailJS template parameters
+    const templateParams = {
+      to_email: 'admin@iconnectdynamics.com',
+      from_name: formData.name,
+      from_email: formData.email,
+      phone: formData.phone,
+      subject: formData.subject,
+      message: formData.message,
+    };
+    
+    // Send email using EmailJS
+    emailjs.send(
+      'service_sf8ogcr',  // Replace with your EmailJS service ID
+      'template_2yszjip', // Replace with your EmailJS template ID
+      templateParams
+    ).then(
+      (response) => {
+        console.log('Email sent successfully!', response.status, response.text);
+        alert('Thank you for your message! We will get back to you soon at admin@iconnectdynamics.com');
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          subject: '',
+          message: ''
+        });
+      },
+      (error) => {
+        console.log('Failed to send email:', error);
+        alert('Failed to send message. Please try again later.');
+      }
+    );
   };
 
   return (
@@ -55,16 +84,16 @@ function ContactUs() {
                 <p>United States</p>
               </div>
 
-              <div className="contact-detail">
-                <h3>📞 Phone</h3>
-                <p>Main: +1 (555) 123-4567</p>
+              <div className="contact-info">
+                <h3>☎️ Phone</h3>
+                <p>Main: +1 (970) 469-0840</p>
                 <p>Sales: +1 (555) 234-5678</p>
                 <p>Support: +1 (555) 345-6789</p>
               </div>
 
               <div className="contact-detail">
                 <h3>📧 Email</h3>
-                <p>Info: info@iconnectdynamics.com</p>
+                <p>Info: admin@iconnectdynamics.com</p>
                 <p>Sales: sales@iconnectdynamics.com</p>
                 <p>Support: support@iconnectdynamics.com</p>
               </div>

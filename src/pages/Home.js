@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import emailjs from 'emailjs-com';
 import {
   Typography,
   Box,
@@ -8,18 +9,104 @@ import {
   CardContent,
   Container,
   Paper,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  TextField,
+  Button,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel,
 } from '@mui/material';
 import LightbulbIcon from '@mui/icons-material/Lightbulb';
 import HeadsetMicIcon from '@mui/icons-material/HeadsetMic';
 import ShieldIcon from '@mui/icons-material/Shield';
 import GroupIcon from '@mui/icons-material/Group';
+import CloseIcon from '@mui/icons-material/Close';
 import './Home.css';
 
 function Home() {
   const [expandedAccordion, setExpandedAccordion] = useState('expert-team');
+  const [openContactForm, setOpenContactForm] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    company: '',
+    service: '',
+    message: '',
+  });
+
+  useEffect(() => {
+    emailjs.init('FWnok6harYNe5Qo63');
+  }, []);
 
   const handleAccordionChange = (panel) => {
     setExpandedAccordion(expandedAccordion === panel ? null : panel);
+  };
+
+  const handleOpenContactForm = () => {
+    setOpenContactForm(true);
+  };
+
+  const handleCloseContactForm = () => {
+    setOpenContactForm(false);
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      company: '',
+      service: '',
+      message: '',
+    });
+  };
+
+  const handleFormChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmitForm = (e) => {
+    e.preventDefault();
+    
+    const templateParams = {
+      to_email: 'admin@iconnectdynamics.com',
+      from_name: formData.name,
+      from_email: formData.email,
+      phone: formData.phone,
+      company: formData.company,
+      service: formData.service,
+      message: formData.message,
+    };
+    
+    emailjs.send(
+      'service_sf8ogcr',
+      'template_2yszjip',
+      templateParams
+    ).then(
+      (response) => {
+        console.log('Email sent successfully:', response);
+        alert('Thank you for your interest! We will contact you soon at admin@iconnectdynamics.com');
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          company: '',
+          service: '',
+          message: '',
+        });
+        handleCloseContactForm();
+      },
+      (error) => {
+        console.error('Failed to send email:', error);
+        alert('There was an issue sending your message. Please try again or contact admin@iconnectdynamics.com directly.');
+      }
+    );
   };
 
   const teamMembers = [
@@ -87,7 +174,7 @@ function Home() {
         <div className="hero-content">
           <h1>Welcome to iConnect Dynamics</h1>
           <p>Transforming Business Through Technology Innovation</p>
-          <button className="cta-button">Get Started</button>
+          <button className="cta-button" onClick={handleOpenContactForm}>Get Started</button>
         </div>
       </section>
 
@@ -319,6 +406,212 @@ function Home() {
           </Box>
         </Container>
       </section>
+
+      {/* Contact Form Modal */}
+      <Dialog open={openContactForm} onClose={handleCloseContactForm} maxWidth="sm" fullWidth>
+        <DialogTitle
+          sx={{
+            backgroundColor: '#1a2a4e',
+            color: '#ffffff',
+            fontWeight: '700',
+            fontSize: '1.3rem',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}
+        >
+          Get In Touch
+          <CloseIcon
+            onClick={handleCloseContactForm}
+            sx={{ cursor: 'pointer', fontSize: '1.5rem', '&:hover': { opacity: 0.7 } }}
+          />
+        </DialogTitle>
+        <DialogContent sx={{ mt: 2 }}>
+          <form onSubmit={handleSubmitForm}>
+            <TextField
+              fullWidth
+              label="Full Name"
+              name="name"
+              value={formData.name}
+              onChange={handleFormChange}
+              required
+              margin="normal"
+              variant="outlined"
+              sx={{
+                '& .MuiOutlinedInput-root': {
+                  '&:hover fieldset': {
+                    borderColor: '#0f4c7e',
+                  },
+                  '&.Mui-focused fieldset': {
+                    borderColor: '#0f4c7e',
+                  },
+                },
+                '& .MuiInputLabel-root.Mui-focused': {
+                  color: '#0f4c7e',
+                },
+              }}
+            />
+            <TextField
+              fullWidth
+              label="Email Address"
+              name="email"
+              type="email"
+              value={formData.email}
+              onChange={handleFormChange}
+              required
+              margin="normal"
+              variant="outlined"
+              sx={{
+                '& .MuiOutlinedInput-root': {
+                  '&:hover fieldset': {
+                    borderColor: '#0f4c7e',
+                  },
+                  '&.Mui-focused fieldset': {
+                    borderColor: '#0f4c7e',
+                  },
+                },
+                '& .MuiInputLabel-root.Mui-focused': {
+                  color: '#0f4c7e',
+                },
+              }}
+            />
+            <TextField
+              fullWidth
+              label="Phone Number"
+              name="phone"
+              value={formData.phone}
+              onChange={handleFormChange}
+              margin="normal"
+              variant="outlined"
+              helperText="Optional"
+              sx={{
+                '& .MuiOutlinedInput-root': {
+                  '&:hover fieldset': {
+                    borderColor: '#0f4c7e',
+                  },
+                  '&.Mui-focused fieldset': {
+                    borderColor: '#0f4c7e',
+                  },
+                },
+                '& .MuiInputLabel-root.Mui-focused': {
+                  color: '#0f4c7e',
+                },
+              }}
+            />
+            <TextField
+              fullWidth
+              label="Company Name"
+              name="company"
+              value={formData.company}
+              onChange={handleFormChange}
+              margin="normal"
+              variant="outlined"
+              helperText="Optional"
+              sx={{
+                '& .MuiOutlinedInput-root': {
+                  '&:hover fieldset': {
+                    borderColor: '#0f4c7e',
+                  },
+                  '&.Mui-focused fieldset': {
+                    borderColor: '#0f4c7e',
+                  },
+                },
+                '& .MuiInputLabel-root.Mui-focused': {
+                  color: '#0f4c7e',
+                },
+              }}
+            />
+            <FormControl
+              fullWidth
+              margin="normal"
+              sx={{
+                '& .MuiOutlinedInput-root': {
+                  '&:hover fieldset': {
+                    borderColor: '#0f4c7e',
+                  },
+                  '&.Mui-focused fieldset': {
+                    borderColor: '#0f4c7e',
+                  },
+                },
+                '& .MuiInputLabel-root.Mui-focused': {
+                  color: '#0f4c7e',
+                },
+              }}
+            >
+              <InputLabel id="service-select-label">Service of Interest</InputLabel>
+              <Select
+                labelId="service-select-label"
+                id="service-select"
+                name="service"
+                value={formData.service}
+                onChange={handleFormChange}
+                label="Service of Interest"
+              >
+                <MenuItem value="">Select a service</MenuItem>
+                <MenuItem value="AWS Cloud">AWS Cloud</MenuItem>
+                <MenuItem value="Azure Cloud">Azure Cloud</MenuItem>
+                <MenuItem value="Agentic AI / GenAI">Agentic AI / GenAI</MenuItem>
+                <MenuItem value="Custom Software Development">Custom Software Development</MenuItem>
+                <MenuItem value="DevOps / Automation">DevOps / Automation</MenuItem>
+              </Select>
+            </FormControl>
+            <TextField
+              fullWidth
+              label="Message"
+              name="message"
+              value={formData.message}
+              onChange={handleFormChange}
+              margin="normal"
+              variant="outlined"
+              multiline
+              rows={4}
+              placeholder="Tell us about your project or requirements..."
+              sx={{
+                '& .MuiOutlinedInput-root': {
+                  '&:hover fieldset': {
+                    borderColor: '#0f4c7e',
+                  },
+                  '&.Mui-focused fieldset': {
+                    borderColor: '#0f4c7e',
+                  },
+                },
+                '& .MuiInputLabel-root.Mui-focused': {
+                  color: '#0f4c7e',
+                },
+              }}
+            />
+          </form>
+        </DialogContent>
+        <DialogActions sx={{ p: 2, gap: 1 }}>
+          <Button
+            onClick={handleCloseContactForm}
+            sx={{
+              color: '#666',
+              fontWeight: '600',
+              '&:hover': {
+                backgroundColor: '#f5f5f5',
+              },
+            }}
+          >
+            Cancel
+          </Button>
+          <Button
+            onClick={handleSubmitForm}
+            variant="contained"
+            sx={{
+              backgroundColor: '#0f4c7e',
+              color: '#ffffff',
+              fontWeight: '600',
+              padding: '8px 24px',
+              '&:hover': {
+                backgroundColor: '#1a2a4e',
+              },
+            }}
+          >
+            Submit
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 }
