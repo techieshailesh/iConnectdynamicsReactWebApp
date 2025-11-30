@@ -141,24 +141,24 @@ function Home() {
   ];
 
   const innovations = [
-    { title: 'AI & Machine Learning', description: 'Leveraging advanced AI technologies for intelligent solutions' },
-    { title: 'Cloud Architecture', description: 'Scalable and secure cloud-native applications' },
-    { title: 'DevOps Excellence', description: 'Continuous integration and deployment pipelines' },
-    { title: 'Microservices', description: 'Modular and flexible service-oriented architecture' },
+    { title: 'Cloud-Driven Innovation', description: 'We leverage the full power of AWS and Microsoft Azure cloud ecosystems to build scalable, secure, and high-performing digital solutions. Our teams innovate through:', details: ['Cloud-native application design', 'Serverless and microservices architectures', 'Automated DevOps pipelines', 'Cloud governance, observability, and resilience patterns', 'Next-generation data engineering and analytics solutions'],},
+    { title: 'Pioneering Agentic AI Solutions', description: 'Iconnect Dynamics LLC is committed to advancing the frontier of enterprise AI through the development of Agentic AI systems—autonomous, intelligent agents capable of reasoning, taking actions, and orchestrating end-to-end workflows.', details: ['OpenAI GPT models and Azure OpenAI Service', 'Multi-agent orchestration frameworks', 'Retrieval-Augmented Generation (RAG) and vector search', 'Autonomous workflow agents and decision-making engines', 'Responsible AI, security, and governance methodologies'] },
+    { title: '3. Culture of Curiosity, Creativity & Experimentation', description: 'Continuous integration and deployment pipelines', details: ['GitHub Actions and Azure Pipelines', 'Infrastructure as Code (Terraform, CloudFormation)', 'Automated testing and code quality checks', 'Container orchestration with Kubernetes'] },
+    { title: 'Microservices', description: 'Modular and flexible service-oriented architecture', details: ['Domain-driven design patterns', 'API-first development approach', 'Service mesh implementation', 'Event-driven architecture'] },
   ];
 
   const supportServices = [
-    { title: '24/7 Technical Support', description: 'Round-the-clock assistance from our expert team' },
-    { title: 'Dedicated Account Manager', description: 'Personalized support and strategic guidance' },
-    { title: 'Rapid Response Time', description: 'Quick resolution of critical issues' },
-    { title: 'Regular Updates & Maintenance', description: 'Proactive system monitoring and optimization' },
+    { title: '24/7 Technical Support', description: 'Round-the-clock assistance from our expert team', details: ['Immediate response to critical issues', 'Multi-channel support (phone, email, chat)', 'Knowledge base and documentation', 'Proactive monitoring'] },
+    { title: 'Dedicated Account Manager', description: 'Personalized support and strategic guidance', details: ['Single point of contact', 'Regular business reviews', 'Strategic planning assistance', 'Priority issue resolution'] },
+    { title: 'Rapid Response Time', description: 'Quick resolution of critical issues', details: ['SLA-backed response times', 'Escalation procedures', 'Emergency support available', 'Root cause analysis'] },
+    { title: 'Regular Updates & Maintenance', description: 'Proactive system monitoring and optimization', details: ['Scheduled maintenance windows', 'Security patches and updates', 'Performance optimization', 'Capacity planning'] },
   ];
 
   const reliabilityFeatures = [
-    { title: '99.9% Uptime SLA', description: 'Enterprise-grade reliability and availability' },
-    { title: 'Disaster Recovery', description: 'Comprehensive backup and recovery solutions' },
-    { title: 'Security Compliance', description: 'ISO 27001, SOC 2, and GDPR compliant' },
-    { title: 'Load Balancing', description: 'High-performance infrastructure management' },
+    { title: '99.9% Uptime SLA', description: 'Enterprise-grade reliability and availability', details: ['Multi-region redundancy', 'Automated failover', 'Health monitoring', 'Performance tracking'] },
+    { title: 'Disaster Recovery', description: 'Comprehensive backup and recovery solutions', details: ['Daily automated backups', 'Geo-redundant storage', 'Recovery time objective (RTO) < 1 hour', 'Recovery point objective (RPO) < 15 minutes'] },
+    { title: 'Security Compliance', description: 'ISO 27001, SOC 2, and GDPR compliant', details: ['Data encryption at rest and in transit', 'Role-based access control (RBAC)', 'Regular security audits', 'Vulnerability management'] },
+    { title: 'Load Balancing', description: 'High-performance infrastructure management', details: ['Automatic traffic distribution', 'Session persistence', 'Health checks and auto-healing', 'DDoS protection'] },
   ];
 
   const accordionItems = [
@@ -287,7 +287,7 @@ function Home() {
                     {item.isTeam
                       ? 'At Iconnect Dynamics LLC, our expert team brings deep technical excellence and strategic leadership across modern IT services, cloud engineering, and next-generation AI innovation. We specialize in designing, developing, and operationalizing scalable enterprise solutions on AWS and Microsoft Azure, while pioneering agentic AI systems built on cutting-edge GenAI technologies such as OpenAI, Azure OpenAI, and Microsoft Copilot ecosystems..'
                       : item.id === 'innovation'
-                      ? 'Cutting-edge technology and modern development practices.'
+                      ? 'At Iconnect Dynamics LLC, innovation is not just a practice—it is the foundation of our identity. Our culture is built on continuous learning, experimentation, and a forward-thinking mindset that empowers our teams to transform complex business challenges into intelligent, scalable, and future-ready solutions.'
                       : item.id === 'support'
                       ? '24/7 customer support to ensure your success.'
                       : 'Trusted by businesses worldwide for dependable solutions.'}
@@ -312,7 +312,7 @@ function Home() {
                           }}
                         >
                           <CardContent>
-                            {item.isTeam ? (
+                            {item.isTeam || dataItem.details ? (
                               <>
                                 <Typography
                                   variant="h6"
@@ -351,7 +351,7 @@ function Home() {
                                   {dataItem.description}
                                 </Typography>
                                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-                                  {dataItem.details.map((detail, i) => (
+                                  {dataItem.details && dataItem.details.map((detail, i) => (
                                     <Box key={i} sx={{ display: 'flex', gap: 1, alignItems: 'flex-start' }}>
                                       <Box
                                         sx={{
