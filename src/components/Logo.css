@@ -6,24 +6,25 @@
 }
 
 .logo-image {
-  height: 60px;
+  height: 50px;
   width: auto;
   display: block;
   transition: transform 0.3s ease;
+  filter: drop-shadow(0 2px 4px rgba(77, 184, 255, 0.1));
 }
 
 .logo:hover .logo-image {
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
 
 .logo-text {
   color: #fff;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 1.2rem;
   letter-spacing: 0.5px;
   transition: color 0.3s ease;
 }
 
 .logo:hover .logo-text {
-  color: #007bff;
+  color: #4db8ff;
 }

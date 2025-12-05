@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import emailjs from 'emailjs-com';
 import './Connect.css';
 
 function Connect() {
@@ -10,6 +11,10 @@ function Connect() {
     message: ''
   });
 
+  useEffect(() => {
+    emailjs.init('FWnok6harYNe5Qo63');
+  }, []);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prevState => ({
@@ -20,15 +25,37 @@ function Connect() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message! We will get back to you soon.');
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      subject: '',
-      message: ''
-    });
+    
+    const templateParams = {
+      to_email: 'admin@iconnectdynamics.com',
+      from_name: formData.name,
+      from_email: formData.email,
+      phone: formData.phone,
+      subject: formData.subject,
+      message: formData.message,
+    };
+    
+    emailjs.send(
+      'service_sf8ogcr',
+      'template_2yszjip',
+      templateParams
+    ).then(
+      (response) => {
+        console.log('Email sent successfully:', response);
+        alert('Thank you for your message! We will get back to you soon at admin@iconnectdynamics.com');
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          subject: '',
+          message: ''
+        });
+      },
+      (error) => {
+        console.error('Failed to send email:', error);
+        alert('There was an issue sending your message. Please try again or contact admin@iconnectdynamics.com directly.');
+      }
+    );
   };
 
   return (

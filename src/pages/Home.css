@@ -3,41 +3,49 @@
 }
 
 .hero {
-  background-color: #f5f5f5;
-  color: #333;
+  background: linear-gradient(135deg, #1a2a4e 0%, #0f4c7e 100%);
+  color: #ffffff;
   padding: 6rem 2rem;
   text-align: center;
   margin-top: -20px;
+  box-shadow: 0 4px 20px rgba(15, 76, 126, 0.3);
 }
 
 .hero-content h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
-  font-weight: bold;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
 .hero-content p {
   font-size: 1.3rem;
   margin-bottom: 2rem;
+  font-weight: 300;
+  opacity: 0.95;
 }
 
 .cta-button {
-  background-color: #007bff;
-  color: white;
+  background-color: #4db8ff;
+  color: #1a2a4e;
   border: none;
-  padding: 0.8rem 2rem;
+  padding: 0.9rem 2.5rem;
   font-size: 1rem;
-  border-radius: 4px;
+  font-weight: 600;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(77, 184, 255, 0.3);
 }
 
 .cta-button:hover {
-  background-color: #0056b3;
+  background-color: #2ba8ff;
+  box-shadow: 0 6px 20px rgba(77, 184, 255, 0.4);
+  transform: translateY(-2px);
 }
 
 .features {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 3rem auto;
   padding: 0 2rem;
 }
@@ -55,6 +63,29 @@
   gap: 2rem;
 }
 
+.feature-accordion {
+  grid-column: 1 / -1 !important;
+  background: white !important;
+  padding: 0 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  overflow: hidden;
+  border: 2px solid #0f4c7e !important;
+}
+
+.feature-accordion:hover {
+  box-shadow: 0 8px 20px rgba(15, 76, 126, 0.15) !important;
+}
+
+.feature-accordion-content {
+  grid-column: 1 / -1;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  border: 2px solid #0f4c7e;
+}
+
 .feature-card {
   background: white;
   padding: 2rem;
@@ -69,9 +100,10 @@
 }
 
 .feature-card h3 {
-  color: #007bff;
+  color: #0f4c7e;
   margin-bottom: 1rem;
   font-size: 1.3rem;
+  font-weight: 700;
 }
 
 .feature-card p {

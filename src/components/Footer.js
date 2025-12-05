@@ -29,8 +29,8 @@ function Footer() {
         </div>
         <div className="footer-section">
           <h4>Contact</h4>
-          <p>Email: info@iconnectdynamics.com</p>
-          <p>Phone: +1 (555) 123-4567</p>
+          <p>Email: admin@iconnectdynamics.com</p>
+          <p>Phone: +1 (970) 469-0840</p>
         </div>
       </div>
       <div className="footer-bottom">
