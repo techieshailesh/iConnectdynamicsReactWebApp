@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import emailjs from 'emailjs-com';
 import {
   Typography,
@@ -28,6 +29,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import './Home.css';
 
 function Home() {
+  const [searchParams] = useSearchParams();
   const [expandedAccordion, setExpandedAccordion] = useState('expert-team');
   const [openContactForm, setOpenContactForm] = useState(false);
   const [formData, setFormData] = useState({
@@ -41,7 +43,11 @@ function Home() {
 
   useEffect(() => {
     emailjs.init('FWnok6harYNe5Qo63');
-  }, []);
+    // Check if openContact parameter is set to true
+    if (searchParams.get('openContact') === 'true') {
+      setOpenContactForm(true);
+    }
+  }, [searchParams]);
 
   const handleAccordionChange = (panel) => {
     setExpandedAccordion(expandedAccordion === panel ? null : panel);

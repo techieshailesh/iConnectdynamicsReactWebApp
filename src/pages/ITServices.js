@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   Dialog,
   DialogTitle,
@@ -19,6 +20,7 @@ import './ITServices.css';
 function ITServices() {
   const [selectedService, setSelectedService] = useState(null);
   const [openDialog, setOpenDialog] = useState(false);
+  const navigate = useNavigate();
 
   const services = [
     {
@@ -64,6 +66,11 @@ function ITServices() {
   const handleCloseDialog = () => {
     setOpenDialog(false);
     setSelectedService(null);
+  };
+
+  const handleContactUs = () => {
+    handleCloseDialog();
+    navigate('/?openContact=true');
   };
 
   return (
@@ -280,6 +287,7 @@ function ITServices() {
           </Button>
           <Button
             variant="contained"
+            onClick={handleContactUs}
             sx={{
               backgroundColor: '#0f4c7e',
               color: '#ffffff',
