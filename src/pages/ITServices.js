@@ -305,7 +305,7 @@ function ITServices() {
       <section className="cta-section">
         <h2>Ready to Transform Your Business?</h2>
         <p>Contact our team to discuss your IT needs and get a customized solution</p>
-        <button className="cta-btn">Get in Touch</button>
+        <button className="cta-btn" onClick={() => navigate('/?openContact=true')}>Get in Touch</button>
       </section>
     </div>
   );
