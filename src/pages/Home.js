@@ -141,31 +141,22 @@ function Home() {
   ];
 
   const innovations = [
-    { title: 'Cloud-Driven Innovation', description: 'We leverage the full power of AWS and Microsoft Azure cloud ecosystems to build scalable, secure, and high-performing digital solutions. Our teams innovate through:', details: ['Cloud-native application design', 'Serverless and microservices architectures', 'Automated DevOps pipelines', 'Cloud governance, observability, and resilience patterns', 'Next-generation data engineering and analytics solutions'],},
+    { title: 'Cloud-Driven Innovation', description: 'We leverage the full power of AWS and Microsoft Azure cloud ecosystems to build scalable, secure, and high-performing digital solutions. Our teams innovate through:', details: ['Cloud-native application design', 'Serverless and Customer-Centric Innovation Focus architectures', 'Automated DevOps pipelines', 'Cloud governance, observability, and resilience patterns', 'Next-generation data engineering and analytics solutions'],},
     { title: 'Pioneering Agentic AI Solutions', description: 'Iconnect Dynamics LLC is committed to advancing the frontier of enterprise AI through the development of Agentic AI systems—autonomous, intelligent agents capable of reasoning, taking actions, and orchestrating end-to-end workflows.', details: ['OpenAI GPT models and Azure OpenAI Service', 'Multi-agent orchestration frameworks', 'Retrieval-Augmented Generation (RAG) and vector search', 'Autonomous workflow agents and decision-making engines', 'Responsible AI, security, and governance methodologies'] },
-    { title: '3. Culture of Curiosity, Creativity & Experimentation', description: 'Continuous integration and deployment pipelines', details: ['GitHub Actions and Azure Pipelines', 'Infrastructure as Code (Terraform, CloudFormation)', 'Automated testing and code quality checks', 'Container orchestration with Kubernetes'] },
-    { title: 'Microservices', description: 'Modular and flexible service-oriented architecture', details: ['Domain-driven design patterns', 'API-first development approach', 'Service mesh implementation', 'Event-driven architecture'] },
+    { title: '3. Culture of Curiosity, Creativity & Experimentation', description: 'Our team thrives on a culture of curiosity—where new ideas are encouraged and innovation is a shared responsibility. We:', details: ['Host internal innovation labs and rapid prototyping sprints', 'Encourage cross-functional collaboration between cloud, AI, and engineering teams', 'Explore emerging technologies such as LLMs, multi-agent architectures, generative analytics, and cloud automation', 'Promote continuous learning through certifications, research, and applied experimentation'] },
+    { title: 'Customer-Centric Innovation Focus', description: 'Innovation at Iconnect Dynamics LLC is always tied to customer value. We build solutions that:', details: ['Reduce operational complexity', 'Improve efficiency and productivity', 'Drive automation and intelligent decision-making', 'Enable secure, compliant, and scalable digital transformation'] },
   ];
 
   const supportServices = [
     { title: '24/7 Technical Support', description: 'Round-the-clock assistance from our expert team', details: ['Immediate response to critical issues', 'Multi-channel support (phone, email, chat)', 'Knowledge base and documentation', 'Proactive monitoring'] },
     { title: 'Dedicated Account Manager', description: 'Personalized support and strategic guidance', details: ['Single point of contact', 'Regular business reviews', 'Strategic planning assistance', 'Priority issue resolution'] },
     { title: 'Rapid Response Time', description: 'Quick resolution of critical issues', details: ['SLA-backed response times', 'Escalation procedures', 'Emergency support available', 'Root cause analysis'] },
-    { title: 'Regular Updates & Maintenance', description: 'Proactive system monitoring and optimization', details: ['Scheduled maintenance windows', 'Security patches and updates', 'Performance optimization', 'Capacity planning'] },
-  ];
-
-  const reliabilityFeatures = [
-    { title: '99.9% Uptime SLA', description: 'Enterprise-grade reliability and availability', details: ['Multi-region redundancy', 'Automated failover', 'Health monitoring', 'Performance tracking'] },
-    { title: 'Disaster Recovery', description: 'Comprehensive backup and recovery solutions', details: ['Daily automated backups', 'Geo-redundant storage', 'Recovery time objective (RTO) < 1 hour', 'Recovery point objective (RPO) < 15 minutes'] },
-    { title: 'Security Compliance', description: 'ISO 27001, SOC 2, and GDPR compliant', details: ['Data encryption at rest and in transit', 'Role-based access control (RBAC)', 'Regular security audits', 'Vulnerability management'] },
-    { title: 'Load Balancing', description: 'High-performance infrastructure management', details: ['Automatic traffic distribution', 'Session persistence', 'Health checks and auto-healing', 'DDoS protection'] },
   ];
 
   const accordionItems = [
     { id: 'expert-team', title: 'Expert Team', subtitle: 'Highly skilled professionals', icon: GroupIcon, data: teamMembers, isTeam: true },
     { id: 'innovation', title: 'Innovation', subtitle: 'Cutting-edge technology', icon: LightbulbIcon, data: innovations },
     { id: 'support', title: 'Support', subtitle: '24/7 customer support', icon: HeadsetMicIcon, data: supportServices },
-    { id: 'reliability', title: 'Reliability', subtitle: 'Trusted worldwide', icon: ShieldIcon, data: reliabilityFeatures },
   ];
 
   return (
@@ -194,7 +185,7 @@ function Home() {
           </Typography>
 
           {/* Inline Accordion Buttons */}
-          <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 2, mb: 4 }}>
+          <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', md: '1fr 1fr 1fr' }, gap: 2, mb: 4 }}>
             {accordionItems.map((item) => {
               const IconComponent = item.icon;
               return (

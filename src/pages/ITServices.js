@@ -11,9 +11,9 @@ function ITServices() {
     },
     {
       id: 2,
-      name: 'Custom Software Development',
-      description: 'Tailored software solutions built to your specifications',
-      icon: '💻'
+      name: 'Managed IT Services',
+      description: '24/7 monitoring and maintenance of your IT infrastructure',
+      icon: '🛠️'
     },
     {
       id: 3,

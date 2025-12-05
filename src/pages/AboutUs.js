@@ -12,19 +12,16 @@ function AboutUs() {
       <div className="about-content">
         <section className="about-section">
           <h2>Our Story</h2>
-          <p>
+          <p style={{ textAlign: 'justify' }}>
             iConnect Dynamics was founded with a vision to deliver innovative IT solutions
-            that transform businesses. With over a decade of experience, we've successfully
-            partnered with hundreds of organizations worldwide to achieve their digital
-            transformation goals.
+            that transform businesses. By uniting deep expertise in AWS/Azure cloud technologies with advanced Agentic AI engineering, we cultivate an environment where people, technology, and creativity converge to build transformative digital experiences. We are committed to pushing boundaries, embracing new possibilities, and delivering intelligent solutions that shape the future of enterprise technology.
           </p>
         </section>
 
         <section className="about-section">
           <h2>Our Mission</h2>
-          <p>
-            To empower businesses through cutting-edge technology and exceptional service,
-            enabling them to innovate, grow, and succeed in the digital era.
+          <p style={{ textAlign: 'justify' }}>
+            At Iconnect Dynamics, our mission is to empower businesses through cutting-edge technology, intelligent cloud solutions, and exceptional service—enabling them to innovate, grow, and succeed in the digital era. Our mission is to empower organizations with advanced cloud and AI-driven solutions that fuel innovation, accelerate growth, and ensure success in a rapidly evolving digital world.
           </p>
         </section>
 
@@ -48,7 +45,7 @@ function AboutUs() {
             </div>
             <div className="reason-card">
               <h3>Proven Track Record</h3>
-              <p>Successfully delivered 500+ projects across various industries</p>
+              <p>Successfully delivered projects across various industries</p>
             </div>
             <div className="reason-card">
               <h3>Client-Centric</h3>
