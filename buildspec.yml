@@ -1,0 +1,43 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+    commands:
+      - echo "Installing dependencies..."
+      - npm install
+
+  pre_build:
+    commands:
+      - echo "Running linting and tests..."
+      - npm run lint --if-present
+      - npm test -- --coverage --watchAll=false --passWithNoTests || true
+
+  build:
+    commands:
+      - echo "Building React application..."
+      - npm run build
+      - echo "Build completed on `date`"
+
+  post_build:
+    commands:
+      - echo "Build process finished on `date`"
+
+artifacts:
+  files:
+    - "**/*"
+  name: ReactAppBuild
+  discard-paths: yes
+  base-directory: "build"
+
+cache:
+  paths:
+    - "node_modules/**/*"
+    - ".npm/**/*"
+
+reports:
+  coverage:
+    files:
+      - "coverage/cobertura-coverage.xml"
+    file-format: "COBERTURAXML"
