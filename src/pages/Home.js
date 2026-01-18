@@ -169,7 +169,7 @@ function Home() {
     <div className="home">
       <section className="hero">
         <div className="hero-content">
-          <h1>Welcome to iConnect Dynamics</h1>
+          <h1>Welcome to iConnect Dynamics LLC</h1>
           <p>Transforming Business Through Technology Innovation</p>
           <button className="cta-button" onClick={handleOpenContactForm}>Get Started</button>
         </div>
