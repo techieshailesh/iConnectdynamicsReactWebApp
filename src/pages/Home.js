@@ -81,7 +81,7 @@ function Home() {
     e.preventDefault();
     
     const templateParams = {
-      to_email: 'admin@iconnectdynamics.com',
+      to_email: 'careers@iconnectdynamics.com',
       from_name: formData.name,
       from_email: formData.email,
       phone: formData.phone,
@@ -91,13 +91,13 @@ function Home() {
     };
     
     emailjs.send(
-      'service_sf8ogcr',
+      'service_r1j8km2',
       'template_2yszjip',
       templateParams
     ).then(
       (response) => {
         console.log('Email sent successfully:', response);
-        alert('Thank you for your interest! We will contact you soon at admin@iconnectdynamics.com');
+        alert('Thank you for your interest! We will contact you soon at careers@iconnectdynamics.com');
         setFormData({
           name: '',
           email: '',
@@ -110,7 +110,7 @@ function Home() {
       },
       (error) => {
         console.error('Failed to send email:', error);
-        alert('There was an issue sending your message. Please try again or contact admin@iconnectdynamics.com directly.');
+        alert('There was an issue sending your message. Please try again or contact careers@iconnectdynamics.com directly.');
       }
     );
   };

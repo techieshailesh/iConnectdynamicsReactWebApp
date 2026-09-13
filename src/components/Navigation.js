@@ -37,6 +37,11 @@ function Navigation() {
             </Link>
           </li>
           <li className="nav-item">
+            <Link to="/careers" className="nav-link">
+              Careers
+            </Link>
+          </li>
+          <li className="nav-item">
             <Link to="/connect" className="nav-link">
               Connect
             </Link>

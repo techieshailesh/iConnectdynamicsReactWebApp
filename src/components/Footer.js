@@ -24,13 +24,14 @@ function Footer() {
           <ul>
             <li><a href="/insights">Insights</a></li>
             <li><a href="/blogs">Blogs</a></li>
+            <li><a href="/careers">Careers</a></li>
             <li><a href="/connect">Connect</a></li>
           </ul>
         </div>
         <div className="footer-section">
           <h4>Contact</h4>
-          <p>Email: admin@iconnectdynamics.com</p>
-          <p>Phone: +1 (970) 469-0840</p>
+          <p>Email: careers@iconnectdynamics.com</p>
+          <p>Phone: +1 (934) 529-4800</p>
         </div>
       </div>
       <div className="footer-bottom">
