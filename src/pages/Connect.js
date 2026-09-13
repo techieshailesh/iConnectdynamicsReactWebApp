@@ -91,8 +91,8 @@ function Connect() {
 
               <div className="connect-detail">
                 <h3>📧 Email</h3>
-                <p>Info: replyshailesh@iconnectdynamics.com</p>
-                <p>Sales: replyshailesh@iconnectdynamics.com</p>
+                <p>Info: admin@iconnectdynamics.com</p>
+                <p>Sales: admin@iconnectdynamics.com</p>
                 <p>Support: admin@iconnectdynamics.com</p>
               </div>
 
