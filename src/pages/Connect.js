@@ -27,7 +27,7 @@ function Connect() {
     e.preventDefault();
     
     const templateParams = {
-      to_email: 'admin@iconnectdynamics.com',
+      to_email: 'careers@iconnectdynamics.com',
       from_name: formData.name,
       from_email: formData.email,
       phone: formData.phone,
@@ -36,13 +36,13 @@ function Connect() {
     };
     
     emailjs.send(
-      'service_sf8ogcr',
+      'service_r1j8km2',
       'template_2yszjip',
       templateParams
     ).then(
       (response) => {
         console.log('Email sent successfully:', response);
-        alert('Thank you for your message! We will get back to you soon at admin@iconnectdynamics.com');
+        alert('Thank you for your message! We will get back to you soon at careers@iconnectdynamics.com');
         setFormData({
           name: '',
           email: '',
@@ -53,7 +53,7 @@ function Connect() {
       },
       (error) => {
         console.error('Failed to send email:', error);
-        alert('There was an issue sending your message. Please try again or contact admin@iconnectdynamics.com directly.');
+        alert('There was an issue sending your message. Please try again or contact careers@iconnectdynamics.com directly.');
       }
     );
   };
@@ -84,16 +84,16 @@ function Connect() {
 
               <div className="connect-detail">
                 <h3>📞 Phone</h3>
-                <p>Main: +1 (970) 469-0840</p>
-                <p>Sales: +1 (970) 469-0840</p>
+                <p>Main: +1 (934) 529-4800</p>
+                <p>Sales: +1 (934) 529-4800</p>
                 {/* <p>Support: +1 (555) 345-6789</p> */}
               </div>
 
               <div className="connect-detail">
                 <h3>📧 Email</h3>
-                <p>Info: admin@iconnectdynamics.com</p>
-                <p>Sales: admin@iconnectdynamics.com</p>
-                <p>Support: admin@iconnectdynamics.com</p>
+                <p>Info: info@iconnectdynamics.com</p>
+                <p>Sales: sales@iconnectdynamics.com</p>
+                <p>Support: support@iconnectdynamics.com</p>
               </div>
 
               <div className="connect-detail">

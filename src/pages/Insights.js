@@ -98,7 +98,7 @@ function Insights() {
         message: 'Thank you for subscribing to iConnect Dynamics Insights! You will now receive the latest industry trends, expert analysis, and technology insights delivered to your inbox. Stay tuned for valuable content on AI, cloud migration, cybersecurity, digital transformation, and more.',
       };
 
-      emailjs.send('service_sf8ogcr', 'template_2yszjip', templateParams)
+      emailjs.send('service_r1j8km2', 'template_2yszjip', templateParams)
         .then(() => {
           setSubscribed(true);
           setEmail('');
